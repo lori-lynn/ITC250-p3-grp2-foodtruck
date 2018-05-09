@@ -30,12 +30,6 @@ foreach($items as $item){
 
 echo "The subtotal for your items is $total and the subtotal for your extras is $topping_total";
 
-/*
-echo '<pre>';
-var_dump($items);
-echo '/pre';
-*/
-
 class Item
 {
     public $ID = 0;
