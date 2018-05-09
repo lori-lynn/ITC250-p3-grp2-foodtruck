@@ -24,7 +24,7 @@ $toppings_total = 0;
 foreach($items as $item){
     $total += $item->Price;
     foreach($item->Extras as $extra){
-            $topping_total += .25;
+            $extras_total += $extra->$Extras_price;
     }
 }
 
