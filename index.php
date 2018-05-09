@@ -64,7 +64,7 @@ if(isset($_POST['total'])){
           <br>
           <p>Food</p>
           <p>
-            Burger - Non-GMO Beef & Organic Wholewheat Buns. - $5.00
+            Burger - Non-GMO Beef & Organic Whole Wheat Buns. - $5.00
             <select name="burgers">
               <option value="0">0</option>
               <option value="1">1</option>
