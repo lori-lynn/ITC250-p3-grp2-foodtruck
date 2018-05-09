@@ -49,7 +49,7 @@ class Item
 
     public function addExtra($extra,$Price)
     {
-        $this->Extras[] = $extra;
+        $this->Extra = $extra;
         $this->Price = $Price;
 
     }#end addExtra()
