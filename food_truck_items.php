@@ -36,7 +36,7 @@ class Item
     public $Name = '';
     public $Description = '';
     public $Price = 0;
-    public $Extras_price = '';
+    public $Extras_price = 0;
 
     public function __construct($ID,$Name,$Description,$Price)
     {
