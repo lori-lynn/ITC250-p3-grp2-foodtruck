@@ -1,115 +1,96 @@
 <?php
-if(isset($_POST['submit'])){
-  //variables
-  $fromScale = $_POST['fromScale'];
-  $preTemp = (float)$_POST['preTemp'];
-  $toScale = $_POST['toScale'];
-  $postTemp = $preTemp;
-  //Conversions
-  if($fromScale == 'F' && $toScale == 'C'){
-    $postTemp = 5 / 9 * ($preTemp - 32);
-  }elseif($fromScale == 'F' && $toScale == 'K'){
-    $postTemp = 5 / 9 * ($preTemp - 32) + 273;
-  }elseif($fromScale == 'C' && $toScale == 'F'){
-    $postTemp = 9 / 5 * ($preTemp) + 32;
-  }elseif($fromScale == 'C' && $toScale == 'K'){
-    $postTemp = $preTemp + 273;
-  }elseif($fromScale == 'K' && $toScale == 'F'){
-    $postTemp = 9 / 5 * ($preTemp - 273) + 32;
-  }elseif($fromScale == 'K' && $toScale == 'C'){
-    $postTemp = $preTemp - 273;
-  }else{
-    $postTemp = $preTemp;
-  }
-    //page
+if(isset($_POST['total'])){
+  echo "string";
+}elseif (isset($_POST['submit'])) {
+    $coffies = (int)$_POST['coffies'];
+    $burgers = (int)$_POST['burgers'];
+    $pies = (int)$_POST['pies'];
     echo '
-    <h1>Temperature Converter</h1>
-    <form action="" method="post">
-        <p>Select scale to convert from:</p>
-        <label>
-            <select name="fromScale">
-                <option value="">Please select a scale</option>
-                <option value="K">Kelvin</option>
-                <option value="C">Celsius</option>
-                <option value="F">Fahrenheit</option>
-            </select>
-        </label>
-    </p>
-    <p>
-        <p>Enter value to convert:</p>
-        <label>
-        <input type="number" name="preTemp" min="−459.67" max="10000" />
-        </label>
-    </p>
-    </p>
-    <p>Select scale to convert to:</p>
-        <label>
-            <select name="toScale">
-                <option value="">Please select a scale</option>
-                <option value="K">Kelvin</option>
-                <option value="C">Celsius</option>
-                <option value="F">Fahrenheit</option>
-            </select>
-        </label>
-    </p>
-    <p>
-        <input type="submit" name="submit" value="submit" />
-    </p>
+      <h1>Food Truck</h1>
+      <form action="" method="post">
+    ';
+    for ($x = 1; $x <= $coffies; $x++) {
+      echo "
+        <p>Coffee $x add</p>
+        ";
+      echo '
+        <input type="checkbox" name="cream" value="cream">Cream - $0.25<br>
+        <input type="checkbox" name="sugar" value="sugar">Sugar - $0.25<br>
+      ';
+    }
+    for ($x = 1; $x <= $burgers; $x++) {
+      echo "
+        <p>Burger $x add</p>
+      ";
+      echo '
+        <input type="checkbox" name="cheese" value="cheese">Cheese - $0.75<br>
+        <input type="checkbox" name="bacon" value="bacon">Bacon - $0.75<br>
+        <input type="checkbox" name="fries" value="fries">Fries - $3.00<br>
+      ';
+    }
+    for ($x = 1; $x <= $pies; $x++) {
+      echo "
+        <p>Pie $x add</p>
+      ";
+      echo '
+        <input type="checkbox" name="wcream" value="wcream">Whipped Cream - $0.50<br>
+        <input type="checkbox" name="icream" value="icream">Ice Cream - $1.00<br>
+      ';
+    }
+      echo '
+        <p>
+            <input type="submit" name="total" value="total" />
+        </p>
     </form>
     ';
-    //output overly complecated
-    if(($fromScale == 'F' && $preTemp < -459.67) || ($fromScale == 'C' && $preTemp < -273.15) || ($fromScale == 'K' && $preTemp < 0)){
-      echo '<h2>';
-      echo round($preTemp, 2);
-      echo '&deg';
-      echo $fromScale;
-      echo ' is below absolute zero.';
-      echo '</h2>';
-    }else {
-      echo '<h2>';
-      echo round($preTemp, 2);
-      echo '&deg';
-      echo $fromScale;
-      echo ' = ';
-      echo round($postTemp, 2);
-      echo '&deg';
-      echo $toScale;
-      echo '</h2>';
-    }
 }else{
+    $coffies = (int)$_POST['coffies'];
+    $burgers = (int)$_POST['burgers'];
+    $pies = (int)$_POST['pies'];
     echo '
-    <h1>Temperature Converter</h1>
-    <form action="" method="post">
-        <p>Select scale to convert from:</p>
-        <label>
-            <select name="fromScale">
-                <option value="">Please select a scale</option>
-                <option value="K">Kelvin</option>
-                <option value="C">Celsius</option>
-                <option value="F">Fahrenheit</option>
+      <h1>Food Truck</h1>
+        <form action="" method="post">
+          <p>Beverage</p>
+          <p>
+            Coffee - $3.00
+            <select name="coffies">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
             </select>
-        </label>
-    </p>
-    <p>
-        <p>Enter value to convert:</p>
-        <label>
-        <input type="number" name="preTemp" min="−459.67" max="10000" />
-        </label>
-    </p>
-    </p>
-    <p>Select scale to convert to:</p>
-        <label>
-            <select name="toScale">
-                <option value="">Please select a scale</option>
-                <option value="K">Kelvin</option>
-                <option value="C">Celsius</option>
-                <option value="F">Fahrenheit</option>
+          </p>
+          <br>
+          <p>Food</p>
+          <p>
+            Burger - $5.00
+            <select name="burgers">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
             </select>
-        </label>
-    </p>
-    <p>
-        <input type="submit" name="submit" value="submit" />
-    </p>
+          </p>
+          <br>
+          <p>Desert</p>
+          <p>
+            Pie - $4.00
+            <select name="pies">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </p>
+          <br>
+      ';
+        echo '
+        <p>
+            <input type="submit" name="submit" value="submit" />
+        </p>
     </form>
     ';
 }
