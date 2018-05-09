@@ -52,7 +52,7 @@ if(isset($_POST['total'])){
         <form action="" method="post">
           <p>Beverage</p>
           <p>
-            Coffee - $3.00
+            Coffee - Medium Roast Organic - $3.00
             <select name="coffies">
               <option value="0">0</option>
               <option value="1">1</option>
@@ -64,7 +64,7 @@ if(isset($_POST['total'])){
           <br>
           <p>Food</p>
           <p>
-            Burger - $5.00
+            Burger - Non-GMO Beef & Organic Wholewheat Buns. - $5.00
             <select name="burgers">
               <option value="0">0</option>
               <option value="1">1</option>
@@ -76,7 +76,7 @@ if(isset($_POST['total'])){
           <br>
           <p>Desert</p>
           <p>
-            Pie - $4.00
+            Pie - All Organic Apple - $4.00
             <select name="pies">
               <option value="0">0</option>
               <option value="1">1</option>
