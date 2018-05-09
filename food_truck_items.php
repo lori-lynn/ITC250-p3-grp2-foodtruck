@@ -36,7 +36,7 @@ class Item
     public $Name = '';
     public $Description = '';
     public $Price = 0;
-    public $Extras = '';
+    public $Extras_price = '';
 
     public function __construct($ID,$Name,$Description,$Price)
     {
@@ -47,7 +47,7 @@ class Item
 
     }#end Item constructor
 
-    public function addExtra($extra,$Price)
+    public function addExtra($extra,$Extras_price)
     {
         $this->Extra = $extra;
         $this->Price = $Price;
