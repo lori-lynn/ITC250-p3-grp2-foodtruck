@@ -23,8 +23,8 @@ $total = 0;
 $toppings_total = 0;
 foreach($items as $item){
     $total += $item->Price;
-    foreach($item->Extras as $extra){
-            $extras_total += $extra->$Extras_price;
+    foreach($item->Extras as $Extra){
+            $extras_total += $Extra->$Extras_price;
     }
 }
 
@@ -47,10 +47,10 @@ class Item
 
     }#end Item constructor
 
-    public function addExtra($extra,$Extras_price)
+    public function addExtra($Extra,$Extras_price)
     {
-        $this->Extra = $extra;
-        $this->Price = $Price;
+        $this->Extra = $Extra;
+        $this->Price = $Extras_price;
 
     }#end addExtra()
 
