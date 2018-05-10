@@ -51,8 +51,10 @@ class Item{
 }#end Item class
 
 if(isset($_POST['total'])){
-  $cream = (bool)$_POST['cream'];
-  echo "string";
+    echo "Here is where the item prices are tallied up";
+    /*
+    See TODO 1
+    */
 
 
 }elseif (isset($_POST['submit'])) {
