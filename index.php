@@ -55,48 +55,8 @@ if(isset($_POST['total'])){
     /*
     See TODO 1
     */
-
-
-}elseif (isset($_POST['submit'])) {
-    echo '
-      <h1>Food Truck</h1>
-      <form action="" method="post">
-    ';
-    for ($x = 1; $x <= $coffies; $x++) {
-      echo "
-        <p>Coffee $x add</p>
-        ";
-      echo '
-        <input type="checkbox" name="cream" value="cream">Cream - $0.25<br>
-        <input type="checkbox" name="sugar" value="sugar">Sugar - $0.25<br>
-      ';
-    }
-    for ($x = 1; $x <= $burgers; $x++) {
-      echo "
-        <p>Burger $x add</p>
-      ";
-      echo '
-        <input type="checkbox" name="cheese" value="cheese">Cheese - $0.75<br>
-        <input type="checkbox" name="bacon" value="bacon">Bacon - $0.75<br>
-        <input type="checkbox" name="fries" value="fries">Fries - $3.00<br>
-      ';
-    }
-    for ($x = 1; $x <= $pies; $x++) {
-      echo "
-        <p>Pie $x add</p>
-      ";
-      echo '
-        <input type="checkbox" name="wcream" value="wcream">Whipped Cream - $0.50<br>
-        <input type="checkbox" name="icream" value="icream">Ice Cream - $1.00<br>
-      ';
-    }
-      echo '
-        <p>
-            <input type="submit" name="total" value="total" />
-        </p>
-    </form>
-    ';
-}else{
+}
+else{
     echo '
       <h1>Food Truck</h1>
         <form action="" method="post">
