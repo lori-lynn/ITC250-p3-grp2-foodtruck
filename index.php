@@ -1,4 +1,11 @@
 <?php
+/*Project 3 Foodtruck for ITC250 SP18 by Veda Elon, Lori Mahieu, Scott Allen
+
+*/
+
+include food_truck_items.php;
+
+
 if(isset($_POST['total'])){
   echo "string";
 }elseif (isset($_POST['submit'])) {
