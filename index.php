@@ -1,20 +1,15 @@
 <?php
 /*Project 3 Foodtruck for ITC250 SP18 by Veda Elon, Lori Mahieu, Scott Allen
-
+TODO: 1) create a function that multiplies item->quantity by item->price to create $ItemSubtotal, multiplies Extraquantites by $PriceOfExtras to create $ExtraSubtotal, then adds ($ItemSubtotal + $ExtraSubtotal)*$Tax to get $Total
 */
 
-#include items.php;
-/*$coffies = (int)$_POST['coffies'];
-$burgers = (int)$_POST['burgers'];
-$pies = (int)$_POST['pies'];
-$cream = (int)$_POST['cream'];
-$sugar = (int)$_POST['sugar'];
-$cheese = (int)$_POST['cheese'];
-$bacon = (int)$_POST['bacon'];
-$fries = (int)$_POST['fries'];
-$wcream = (int)$_POST['wcream'];
-$icream = (int)$_POST['icream'];
-*/
+//Initializing Variables
+$PriceOfExtras=1;  //Global price for each extra
+$Total=0;
+$ItemSubtotal=0;
+$ExtraSubtotal=0;
+$Tax=.096;
+
 $myItem = new Item(1,'Coffee','Good Coffee.',3.99);
 $myItem->addExtra('Cream', .25);
 $myItem->addExtra('Sugar', .25);
