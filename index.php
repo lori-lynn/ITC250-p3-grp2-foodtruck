@@ -34,17 +34,19 @@ class Item{
     public $Name = '';
     public $Description = '';
     public $Price = 0;
+    public $Quantity = 0;
     public $Extraname = array();
-    public $Extraprice = array();
-    public function __construct($ID,$Name,$Description,$Price){
+    public $Extraquantity = array();
+    public function __construct($ID,$Name,$Description,$Price,$Quantity){
         $this->ID = $ID;
         $this->Name = $Name;
         $this->Description = $Description;
         $this->Price = $Price;
+        $this->Quantity = $Quantity;
     }#end Item constructor
-    public function addExtra($Extraname, $Extraprice){
+    public function addExtra($Extraname, $Extraquantity){
         $this->Extranames[] = $Extraname;
-        $this->Extraprices[] = $Extraprice;
+        $this->Extraquantities[] = $Extraquantity;
     }#end addExtra()
 }#end Item class
 
