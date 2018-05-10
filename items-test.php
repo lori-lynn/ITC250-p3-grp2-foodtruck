@@ -1,29 +1,25 @@
 <?php
 
-$myItem = new Item(1,'Taco','Our Tacos Are Awesome!',3.99);
-$myItem->addExtra('Sour Cream');
-$myItem->addExtra('Salsa');
-$myItem->addExtra('Guacamole');
-$myItem->addExtra('Cheese');
-$myItem->addExtra('Hot Sauce');
+$myItem = new Item(1,'Taco','Our Tacos Are Awesome!', 3.99);
+$myItem->addExtra('Sour Cream', .49);
+$myItem->addExtra('Salsa', .49);
+$myItem->addExtra('Guacamole', .99);
+$myItem->addExtra('Cheese', .99);
 
 $items[] = $myItem;
 
-$myItem = new Item(2,'Salad','Our Salads Are Awesome!',6.99);
-$myItem->addExtra('Avacado');
-$myItem->addExtra('Black Beans');
-$myItem->addExtra('Cheese');
-$myItem->addExtra('Ranch');
-$myItem->addExtra('Vinagrette');
+$myItem = new Item(2,'Salad','Our Salads Are Awesome!', 6.99);
+$myItem->addExtra('Avacado', 1.99);
+$myItem->addExtra('Black Beans', .99);
+$myItem->addExtra('Cheese', .99);
 
 $items[] = $myItem;
 
-$myItem = new Item(2,'Sunday','Our Sundays Are Awesome!',2.99);
-$myItem->addExtra('Hot Fudge');
-$myItem->addExtra('Nuts');
-$myItem->addExtra('Whipped Cream');
-$myItem->addExtra('Cherries');
-$myItem->addExtra('Caramel');
+$myItem = new Item(2,'Sunday','Our Sundays Are Awesome!', 2.99);
+$myItem->addExtra('Hot Fudge', .19);
+$myItem->addExtra('Nuts', .49);
+$myItem->addExtra('Whipped Cream', .19);
+$myItem->addExtra('Cherries', .49);
 
 $items[] = $myItem;
 
@@ -32,17 +28,11 @@ $toppings_total = 0;
 foreach($items as $item){
     $total += $item->Price;
     foreach($item->Extras as $extra){
-            $topping_total += .25;
+            $topping_total += $extra->$Extraprice;
     }
 }
 
 echo "The subtotal for your items is $total and the subtotal for your extras is $topping_total";
-
-/*
-echo '<pre>';
-var_dump($items);
-echo '/pre';
-*/
 
 class Item
 {
@@ -61,12 +51,11 @@ class Item
 
     }#end Item constructor
 
-    public function addExtra($extra)
+    public function addExtra($Extra, $Extraprice)
     {
-        $this->Extras[] = $extra;
-
+        $this->Extras[] = $Extra;
+        $this->Extrasprice[] = $Extraprice;
     }#end addExtra()
-
 }#end Item class
 
 ?>
