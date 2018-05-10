@@ -47,7 +47,7 @@ class Item
 
     }#end Item constructor
 
-    public function addExtra($Extra,$Extraa_price)
+    public function addExtra($Extra,$Extras_price)
     {
         $this->Extra = $Extra;
         $this->Price = $Extras_price;
