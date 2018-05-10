@@ -1,5 +1,5 @@
 <?php
-
+/*
 $myItem = new Item(1,'Coffee','Good Coffee.',3.00);
 $myItem->addExtra('Cream', .25);
 $myItem->addExtra('Sugar', .25);
@@ -29,7 +29,7 @@ foreach($items as $item){
 }
 
 echo "The subtotal for your items is $total and the subtotal for your extras is $topping_total";
-
+*/
 class Item
 {
     public $ID = 0;
