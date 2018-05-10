@@ -3,15 +3,62 @@
 
 */
 
-include items.php;
+#include items.php;
+/*$coffies = (int)$_POST['coffies'];
+$burgers = (int)$_POST['burgers'];
+$pies = (int)$_POST['pies'];
+$cream = (int)$_POST['cream'];
+$sugar = (int)$_POST['sugar'];
+$cheese = (int)$_POST['cheese'];
+$bacon = (int)$_POST['bacon'];
+$fries = (int)$_POST['fries'];
+$wcream = (int)$_POST['wcream'];
+$icream = (int)$_POST['icream'];
+*/
+$myItem = new Item(1,'Coffee','Good Coffee.',3.99);
+$myItem->addExtra('Cream', .25);
+$myItem->addExtra('Sugar', .25);
 
+$items[] = $myItem;
+
+$myItem = new Item(2,'Burger','Good Burger.',6.99);
+$myItem->addExtra('Cheese', .75);
+$myItem->addExtra('Bacon', .75);
+$myItem->addExtra('Fries', 2.00);
+
+$items[] = $myItem;
+
+$myItem = new Item(2,'Pie','Good Pie.',2.99);
+$myItem->addExtra('Whipped Cream', .50);
+$myItem->addExtra('Ice Cream', 1.00);
+
+$items[] = $myItem;
+
+class Item{
+    public $ID = 0;
+    public $Name = '';
+    public $Description = '';
+    public $Price = 0;
+    public $Extraname = array();
+    public $Extraprice = array();
+    public function __construct($ID,$Name,$Description,$Price){
+        $this->ID = $ID;
+        $this->Name = $Name;
+        $this->Description = $Description;
+        $this->Price = $Price;
+    }#end Item constructor
+    public function addExtra($Extraname, $Extraprice){
+        $this->Extranames[] = $Extraname;
+        $this->Extraprices[] = $Extraprice;
+    }#end addExtra()
+}#end Item class
 
 if(isset($_POST['total'])){
+  $cream = (bool)$_POST['cream'];
   echo "string";
+
+
 }elseif (isset($_POST['submit'])) {
-    $coffies = (int)$_POST['coffies'];
-    $burgers = (int)$_POST['burgers'];
-    $pies = (int)$_POST['pies'];
     echo '
       <h1>Food Truck</h1>
       <form action="" method="post">
@@ -51,49 +98,23 @@ if(isset($_POST['total'])){
     </form>
     ';
 }else{
-    $coffies = (int)$_POST['coffies'];
-    $burgers = (int)$_POST['burgers'];
-    $pies = (int)$_POST['pies'];
     echo '
       <h1>Food Truck</h1>
         <form action="" method="post">
-          <p>Beverage</p>
-          <p>
-            Coffee - Medium Roast Organic - $3.00
-            <select name="coffies">
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select>
-          </p>
-          <br>
-          <p>Food</p>
-          <p>
-            Burger - Non-GMO Beef & Organic Whole Wheat Buns. - $5.00
-            <select name="burgers">
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select>
-          </p>
-          <br>
-          <p>Desert</p>
-          <p>
-            Pie - All Organic Apple - $4.00
-            <select name="pies">
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select>
-          </p>
-          <br>
-      ';
+    ';
+          foreach($items as $item){
+              echo "
+              <p>$item->Name $item->Description each costs $$item->Price.<br>  How many would you like? <input type=\"number\" name=\"quantity\"></p>
+              ";
+              foreach($item->Extranames as $Extraname){
+                echo "
+                <p>$Extraname add $0.99 <br>  How many would you like? <input type=\"number\" name=\"quantity\"></p>
+                ";
+              }
+          }
+          /*echo '<pre>';
+          var_dump($items);
+          echo '</pre>';*/
         echo '
         <p>
             <input type="submit" name="submit" value="submit" />
@@ -102,3 +123,4 @@ if(isset($_POST['total'])){
     ';
 }
 ?>
+
