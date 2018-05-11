@@ -1,10 +1,11 @@
 <?php
 /*Project 3 Foodtruck for ITC250 SP18 by Veda Elon, Lori Mahieu, Scott Allen
 TODO: 1) create a function that multiplies item->quantity by item->price to create $ItemSubtotal, multiplies Extraquantites by $PriceOfExtras to create $ExtraSubtotal, then adds ($ItemSubtotal + $ExtraSubtotal)*$Tax to get $Total
+2)Change the name of the input boxes so that the value is saved
 */
 
 //Initializing Variables
-$PriceOfExtras=1;  //Global price for each extra
+$PriceOfExtras=1.00;  //Global price for each extra
 $Total=0;
 $ItemSubtotal=0;
 $ExtraSubtotal=0;
@@ -52,35 +53,32 @@ class Item{
 }#end Item class
 
 if(isset($_POST['submit'])){
-    echo "Here is where the item prices are tallied up";
-    /*
-    //See TODO 1
+    //Needs to be fixed, currently item->Quantity is not showing up
+    echo "Here is your cart:";
     foreach($items as $item){
         echo "<p>You ordered $item->Quantity $item->Name(s) at a price of $item->Price each.<br>";
-        echo "<p>You also ordered $Extraquantity extras for your $item->Name at a price of $PriceOfExtras<br>";
+        echo "<p>You also ordered $Extraquantity extras for your $item->Name at a price of $$PriceOfExtras each<br>";
         $ItemSubtotal += $ItemSubtotal->Price;
         $ExtraSubtotal += $Extraquantity;
     }
     $Tax=[$ItemSubtotal + $ExtraSubtotal]*$TaxRate;
     $Total=$ItemSubtotal + $ExtraSubtotal + $Tax;
-    
     echo "<p>The subtotal for your items is $ItemSubtotal<br>";
     echo "The subtotal for your extras is $ExtraSubtotal<br>";
     echo "Tax for your order is $Tax<br>";
     echo "The total for your order is $Total</p>";
-    */
-    
+     
 }else{
     echo '
       <h1>Food Truck</h1>
         <form action="" method="post">
     ';
-          foreach($items as $item){
+          foreach($items as $item){  //I think the name in the input box needs to be changed to something like $item->Quantity
               echo "
               <p>$item->Name \"$item->Description\" each costs $$item->Price.  How many would you like? <input type=\"number\" name=\"quantity\">";
-              foreach($item->Extranames as $Extraname){
+              foreach($item->Extranames as $Extraname){ //I think the name in the input box needs to be changed to something like $Extraquantity
                 echo "
-                <br>$Extraname is available for an extra $$PriceOfExtras.  How many would you like? <input type=\"number\" name=\"quantity\">
+                <br>$Extraname is available for an extra $$PriceOfExtras.  How many would you like? <input type=\"number\" name=\"quantity\">  
                 ";
               }
           }
