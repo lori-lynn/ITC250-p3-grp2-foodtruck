@@ -52,7 +52,7 @@ class Item{
 
 if(isset($_POST['submit'])){
     foreach($items as $item){
-    $item->Quantity = (int)$_POST[$item->Name];
+    $item->Quantity += (int)$_POST[$item->Name];
         foreach($item->Extranames as $Extraname){
             $Extraquantity += (int)$_POST[$Extraname];            
         }
