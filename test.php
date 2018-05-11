@@ -54,6 +54,7 @@ class Item {
 
     {
         $this->Extranames[] = $Extraname;
+        
     } // --- END ADDEXTRA FUNCTION ---
 
 }// --- END ITEM CLASS ---
@@ -76,18 +77,20 @@ if(isset($_POST['submit'])) {
             <th>Qty</th>
             <th>Item Price</th>
             <th>Item Subtotal</th>
+            
         </tr>";
         foreach ($items as $item) { // --- CREATES A LOOP THAT DISPLAYS ITEMS ORDERED IN A TABLE ---
             
             if ($item->Quantity > 0) {
                 $itemSubtotal = $item->Price * $item->Quantity;
-                $extraTotal = $
+                $itemsSubtotal += $itemSubtotal;
             echo "
                 <tr>
                     <td>$item->Name</td>
                     <td>$item->Quantity</td>
                     <td>$item->Price</td>
                     <td>$itemSubtotal</td>
+                    
                 </tr>";
                 
             } else {
@@ -112,11 +115,12 @@ if(isset($_POST['submit'])) {
     $ExtraSubtotal = $Extraquantity * 0.49;
 
     // --- TO-DO: ADD THIS INFORMATION IN A TABLE OF IT'S OWN ---
-    $Tax = ($ItemSubtotal + $ExtraSubtotal) * $TaxRate;
-    $Total = $ItemSubtotal + $ExtraSubtotal + $Tax;
+    
+    $Tax = ($itemsSubtotal + $ExtraSubtotal) * $TaxRate;
+    $Total = $itemsSubtotal + $ExtraSubtotal + $Tax;
     echo '<table>';
     echo "<p>The subtotal for your items is $";
-    echo number_format($ItemSubtotal, 2);
+    echo number_format($itemsSubtotal, 2);
     echo "</p>";
     echo "<p>The subtotal for your extras is $";
     echo number_format($ExtraSubtotal, 2);
