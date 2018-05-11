@@ -9,23 +9,24 @@ $Total=0;
 $ItemSubtotal=0;
 $ExtraSubtotal=0;
 $Tax=.096;
+$Tax=0;
 
 $myItem = new Item(0,'Coffee','Served Hot and Fresh!',3.99,0);
-$myItem->addExtra('Cream', .25);
-$myItem->addExtra('Sugar', .25);
+$myItem->addExtra('Cream', 0);
+$myItem->addExtra('Sugar', 0);
 
 $items[] = $myItem;
 
 $myItem = new Item(1,'Burger','Made from real cows!',6.99,0);
-$myItem->addExtra('Cheese', .75);
-$myItem->addExtra('Bacon', .75);
-$myItem->addExtra('Fries', 2.00);
+$myItem->addExtra('Cheese', 0);
+$myItem->addExtra('Bacon', 0);
+$myItem->addExtra('Fries', 0);
 
 $items[] = $myItem;
 
 $myItem = new Item(2,'Pie','Damn fine cherry pie!',2.99,0);
-$myItem->addExtra('Whipped Cream', .50);
-$myItem->addExtra('Ice Cream', 1.00);
+$myItem->addExtra('Whipped Cream', 0);
+$myItem->addExtra('Ice Cream', 0);
 
 $items[] = $myItem;
 
