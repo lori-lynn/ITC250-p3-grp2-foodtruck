@@ -8,7 +8,7 @@ $PriceOfExtras=1;  //Global price for each extra
 $Total=0;
 $ItemSubtotal=0;
 $ExtraSubtotal=0;
-$Tax=.096;
+$TaxRate=.096;
 $Tax=0;
 
 $myItem = new Item(0,'Coffee','Served Hot and Fresh!',3.99,0);
@@ -54,7 +54,20 @@ class Item{
 if(isset($_POST['total'])){
     echo "Here is where the item prices are tallied up";
     /*
-    See TODO 1
+    //See TODO 1
+    foreach($items as $item){
+        echo "<p>You ordered $item->Quantity $item->Name(s) at a price of $item->Price each.<br>";
+        echo "<p>You also ordered $Extraquantity extras for your $item->Name at a price of $PriceOfExtras<br>";
+        $ItemSubtotal += $ItemSubtotal->Price;
+        $ExtraSubtotal += $Extraquantity;
+    }
+    $Tax=[$ItemSubtotal + $ExtraSubtotal]*$TaxRate;
+    $Total=$ItemSubtotal + $ExtraSubtotal + $Tax;
+    
+    echo "<p>The subtotal for your items is $ItemSubtotal<br>";
+    echo "The subtotal for your extras is $ExtraSubtotal<br>";
+    echo "Tax for your order is $Tax<br>";
+    echo "The total for your order is $Total</p>";
     */
     
 }else{
