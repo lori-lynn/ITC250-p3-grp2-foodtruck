@@ -10,20 +10,20 @@ $ItemSubtotal=0;
 $ExtraSubtotal=0;
 $Tax=.096;
 
-$myItem = new Item(1,'Coffee','Good Coffee.',3.99);
+$myItem = new Item(0,'Coffee','Served Hot and Fresh!',3.99,0);
 $myItem->addExtra('Cream', .25);
 $myItem->addExtra('Sugar', .25);
 
 $items[] = $myItem;
 
-$myItem = new Item(2,'Burger','Good Burger.',6.99);
+$myItem = new Item(1,'Burger','Made from real cows!',6.99,0);
 $myItem->addExtra('Cheese', .75);
 $myItem->addExtra('Bacon', .75);
 $myItem->addExtra('Fries', 2.00);
 
 $items[] = $myItem;
 
-$myItem = new Item(2,'Pie','Good Pie.',2.99);
+$myItem = new Item(2,'Pie','Damn fine cherry pie!',2.99,0);
 $myItem->addExtra('Whipped Cream', .50);
 $myItem->addExtra('Ice Cream', 1.00);
 
@@ -55,19 +55,18 @@ if(isset($_POST['total'])){
     /*
     See TODO 1
     */
-}
-else{
+    
+}else{
     echo '
       <h1>Food Truck</h1>
         <form action="" method="post">
     ';
           foreach($items as $item){
               echo "
-              <p>$item->Name $item->Description each costs $$item->Price.<br>  How many would you like? <input type=\"number\" name=\"quantity\"></p>
-              ";
+              <p>$item->Name \"$item->Description\" each costs $$item->Price.  How many would you like? <input type=\"number\" name=\"quantity\">";
               foreach($item->Extranames as $Extraname){
                 echo "
-                <p>$Extraname add $0.99 <br>  How many would you like? <input type=\"number\" name=\"quantity\"></p>
+                <br>$Extraname is available for an extra $$PriceOfExtras.  How many would you like? <input type=\"number\" name=\"quantity\">
                 ";
               }
           }
