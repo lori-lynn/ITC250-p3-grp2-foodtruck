@@ -24,8 +24,8 @@ $myItem->addExtra('Fries');
 $items[] = $myItem;
 
 $myItem = new Item(2,'Pie','Damn fine cherry pie!',2.99,0);
-$myItem->addExtra('Whipped Cream');
-$myItem->addExtra('Ice Cream');
+$myItem->addExtra('Whip');
+$myItem->addExtra('IceCream');
 
 $items[] = $myItem;
 
