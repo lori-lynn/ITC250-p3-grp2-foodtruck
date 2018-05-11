@@ -51,7 +51,7 @@ class Item{
     }#end addExtra()
 }#end Item class
 
-if(isset($_POST['total'])){
+if(isset($_POST['submit'])){
     echo "Here is where the item prices are tallied up";
     /*
     //See TODO 1
