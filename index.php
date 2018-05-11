@@ -1,36 +1,33 @@
 <?php
 /*Project 3 Foodtruck for ITC250 SP18 by Veda Elon, Lori Mahieu, Scott Allen
-
+TODO: 1) create a function that multiplies item->quantity by item->price to create $ItemSubtotal, multiplies Extraquantites by $PriceOfExtras to create $ExtraSubtotal, then adds ($ItemSubtotal + $ExtraSubtotal)*$Tax to get $Total
+2)Change the name of the input boxes so that the value is saved
 */
 
-#include items.php;
-/*$coffies = (int)$_POST['coffies'];
-$burgers = (int)$_POST['burgers'];
-$pies = (int)$_POST['pies'];
-$cream = (int)$_POST['cream'];
-$sugar = (int)$_POST['sugar'];
-$cheese = (int)$_POST['cheese'];
-$bacon = (int)$_POST['bacon'];
-$fries = (int)$_POST['fries'];
-$wcream = (int)$_POST['wcream'];
-$icream = (int)$_POST['icream'];
-*/
-$myItem = new Item(1,'Coffee','Good Coffee.',3.99);
-$myItem->addExtra('Cream', .25);
-$myItem->addExtra('Sugar', .25);
+//Initializing Variables
+$PriceOfExtras=1.00;  //Global price for each extra
+$Total=0;
+$ItemSubtotal=0;
+$ExtraSubtotal=0;
+$TaxRate=.096;
+$Tax=0;
+
+$myItem = new Item(0,'Coffee','Served Hot and Fresh!',3.99,0);
+$myItem->addExtra('Cream', 0);
+$myItem->addExtra('Sugar', 0);
 
 $items[] = $myItem;
 
-$myItem = new Item(2,'Burger','Good Burger.',6.99);
-$myItem->addExtra('Cheese', .75);
-$myItem->addExtra('Bacon', .75);
-$myItem->addExtra('Fries', 2.00);
+$myItem = new Item(1,'Burger','Made from real cows!',6.99,0);
+$myItem->addExtra('Cheese', 0);
+$myItem->addExtra('Bacon', 0);
+$myItem->addExtra('Fries', 0);
 
 $items[] = $myItem;
 
-$myItem = new Item(2,'Pie','Good Pie.',2.99);
-$myItem->addExtra('Whipped Cream', .50);
-$myItem->addExtra('Ice Cream', 1.00);
+$myItem = new Item(2,'Pie','Damn fine cherry pie!',2.99,0);
+$myItem->addExtra('Whipped Cream', 0);
+$myItem->addExtra('Ice Cream', 0);
 
 $items[] = $myItem;
 
@@ -39,76 +36,49 @@ class Item{
     public $Name = '';
     public $Description = '';
     public $Price = 0;
+    public $Quantity = 0;
     public $Extraname = array();
-    public $Extraprice = array();
-    public function __construct($ID,$Name,$Description,$Price){
+    public $Extraquantity = array();
+    public function __construct($ID,$Name,$Description,$Price,$Quantity){
         $this->ID = $ID;
         $this->Name = $Name;
         $this->Description = $Description;
         $this->Price = $Price;
+        $this->Quantity = $Quantity;
     }#end Item constructor
-    public function addExtra($Extraname, $Extraprice){
+    public function addExtra($Extraname, $Extraquantity){
         $this->Extranames[] = $Extraname;
-        $this->Extraprices[] = $Extraprice;
+        $this->Extraquantities[] = $Extraquantity;
     }#end addExtra()
 }#end Item class
 
-if(isset($_POST['total'])){
-  $cream = (bool)$_POST['cream'];
-  echo "string";
-
-
-}elseif (isset($_POST['submit'])) {
-    echo '
-      <h1>Food Truck</h1>
-      <form action="" method="post">
-    ';
-    for ($x = 1; $x <= $coffies; $x++) {
-      echo "
-        <p>Coffee $x add</p>
-        ";
-      echo '
-        <input type="checkbox" name="cream" value="cream">Cream - $0.25<br>
-        <input type="checkbox" name="sugar" value="sugar">Sugar - $0.25<br>
-      ';
+if(isset($_POST['submit'])){
+    //Needs to be fixed, currently item->Quantity is not showing up
+    echo "Here is your cart:";
+    foreach($items as $item){
+        echo "<p>You ordered $item->Quantity $item->Name(s) at a price of $item->Price each.<br>";
+        echo "<p>You also ordered $Extraquantity extras for your $item->Name at a price of $$PriceOfExtras each<br>";
+        $ItemSubtotal += $ItemSubtotal->Price;
+        $ExtraSubtotal += $Extraquantity;
     }
-    for ($x = 1; $x <= $burgers; $x++) {
-      echo "
-        <p>Burger $x add</p>
-      ";
-      echo '
-        <input type="checkbox" name="cheese" value="cheese">Cheese - $0.75<br>
-        <input type="checkbox" name="bacon" value="bacon">Bacon - $0.75<br>
-        <input type="checkbox" name="fries" value="fries">Fries - $3.00<br>
-      ';
-    }
-    for ($x = 1; $x <= $pies; $x++) {
-      echo "
-        <p>Pie $x add</p>
-      ";
-      echo '
-        <input type="checkbox" name="wcream" value="wcream">Whipped Cream - $0.50<br>
-        <input type="checkbox" name="icream" value="icream">Ice Cream - $1.00<br>
-      ';
-    }
-      echo '
-        <p>
-            <input type="submit" name="total" value="total" />
-        </p>
-    </form>
-    ';
+    $Tax=[$ItemSubtotal + $ExtraSubtotal]*$TaxRate;
+    $Total=$ItemSubtotal + $ExtraSubtotal + $Tax;
+    echo "<p>The subtotal for your items is $ItemSubtotal<br>";
+    echo "The subtotal for your extras is $ExtraSubtotal<br>";
+    echo "Tax for your order is $Tax<br>";
+    echo "The total for your order is $Total</p>";
+     
 }else{
     echo '
       <h1>Food Truck</h1>
         <form action="" method="post">
     ';
-          foreach($items as $item){
+          foreach($items as $item){  //I think the name in the input box needs to be changed to something like $item->Quantity
               echo "
-              <p>$item->Name $item->Description each costs $$item->Price.<br>  How many would you like? <input type=\"number\" name=\"quantity\"></p>
-              ";
-              foreach($item->Extranames as $Extraname){
+              <p>$item->Name \"$item->Description\" each costs $$item->Price.  How many would you like? <input type=\"number\" name=\"quantity\">";
+              foreach($item->Extranames as $Extraname){ //I think the name in the input box needs to be changed to something like $Extraquantity
                 echo "
-                <p>$Extraname add $0.99 <br>  How many would you like? <input type=\"number\" name=\"quantity\"></p>
+                <br>$Extraname is available for an extra $$PriceOfExtras.  How many would you like? <input type=\"number\" name=\"quantity\">  
                 ";
               }
           }
