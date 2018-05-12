@@ -2,15 +2,15 @@
 /*Project 3 Foodtruck for ITC250 SP18 by Veda Elon, Lori Mahieu, Scott Allen
 */
 
-//--- INIT VARIABLES ---
+//--- INITIALIZE VARIABLES ---
 
-$Total=0;
-$ItemSubtotal=0;
-$Extraquantity=0;
-$ExtraSubtotal=0;
-$TaxRate=.096;
-$Tax=0;
-
+$Total = 0;
+$ItemSubtotal = 0;
+$Extraquantity = 0;
+$ExtraSubtotal = 0;
+$TaxRate = .096;
+$Tax = 0;
+$itemsSubtotal = 0; 
 
 // --- ADD ITEMS ---
 
@@ -33,6 +33,7 @@ $myItem->addExtra('IceCream');
 
 $items[] = $myItem;
 
+// --- BEGIN ITEM CLASS ---
 class Item {
     public $ID = 0;
     public $Name = '';
@@ -68,6 +69,7 @@ if(isset($_POST['submit'])) {
             $Extraquantity += (int)$_POST[$Extraname];            
         }
     }
+    $ExtraSubtotal = $Extraquantity * 0.49;
     echo "Here is your cart:";
     // --- CREATING A TABLE TO DISPLAY PURCHASED ITEMS ---
     echo " 
@@ -80,8 +82,9 @@ if(isset($_POST['submit'])) {
             
         </tr>";
         foreach ($items as $item) { // --- CREATES A LOOP THAT DISPLAYS ITEMS ORDERED IN A TABLE ---
-            
+           
             if ($item->Quantity > 0) {
+               
                 $itemSubtotal = $item->Price * $item->Quantity;
                 $itemsSubtotal += $itemSubtotal;
             echo "
@@ -91,6 +94,12 @@ if(isset($_POST['submit'])) {
                     <td>$item->Price</td>
                     <td>$itemSubtotal</td>
                     
+                </tr>
+                <tr>
+                    <td>Extras</td>
+                    <td>$Extraquantity</td>
+                    <td>.49</td>
+                    <td>$ExtraSubtotal</td>
                 </tr>";
                 
             } else {
@@ -111,27 +120,48 @@ if(isset($_POST['submit'])) {
     //     }
     // }
 
-    echo "<p>You added $Extraquantity extras to your order at $0.49 each.</p>";
-    $ExtraSubtotal = $Extraquantity * 0.49;
+    // echo "<p>You added $Extraquantity extras to your order at $0.49 each.</p>";
+   
 
     // --- TO-DO: ADD THIS INFORMATION IN A TABLE OF IT'S OWN ---
+    $itemsSubtotal += $ExtraSubtotal;
+    $Tax = $itemsSubtotal * $TaxRate;
+    $Total = $itemsSubtotal + $Tax;
+    $Tax = number_format($Tax, 2);
+    $Total = number_format($Total, 2);
+
+    echo "<table>
+
+        <tr>
+            <td>Subtotal</td>
+            <td>$itemsSubtotal</td>
+        </tr>
+        <tr>
+            <td>Tax</td>
+            <td>$Tax</td>
+        </tr>
+        <tr>
+            <td>Total</td>
+            <td>$Total</td>
+        </tr>
     
-    $Tax = ($itemsSubtotal + $ExtraSubtotal) * $TaxRate;
-    $Total = $itemsSubtotal + $ExtraSubtotal + $Tax;
-    echo '<table>';
-    echo "<p>The subtotal for your items is $";
-    echo number_format($itemsSubtotal, 2);
-    echo "</p>";
-    echo "<p>The subtotal for your extras is $";
-    echo number_format($ExtraSubtotal, 2);
-    echo "</p>";
-    echo "<p>The tax for your order is $";
-    echo number_format($Tax, 2);
-    echo "</p>";
-    echo "<p>The total for your order is $";
-    echo number_format($Total, 2);
-    echo "</p>"; 
-    echo '</table>';
+    ";
+    // ---- SOURCE CODE FOR ABOVE TABLE ---
+    // echo '<table>';
+    // echo "<p>The subtotal for your items is $";
+    // echo number_format($itemsSubtotal, 2);
+    // echo "</p>";
+    // echo "<p>The subtotal for your extras is $";
+    // echo number_format($ExtraSubtotal, 2);
+    // echo "</p>";
+    // echo "<p>The tax for your order is $";
+    // echo number_format($Tax, 2);
+    // echo "</p>";
+    // echo "<p>The total for your order is $";
+    // echo number_format($Total, 2);
+    // echo "</p>"; 
+    // echo '</table>';
+
 } else {
     echo '
     <h1>Food Truck</h1>
