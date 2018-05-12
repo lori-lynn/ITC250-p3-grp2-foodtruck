@@ -95,18 +95,21 @@ if(isset($_POST['submit'])) {
                     <td>$itemSubtotal</td>
                     
                 </tr>
-                <tr>
-                    <td>Extras</td>
-                    <td>$Extraquantity</td>
-                    <td>.49</td>
-                    <td>$ExtraSubtotal</td>
-                </tr>";
+                ";
+                
                 
             } else {
             echo ''; // --- DISPLAYS NOTHING IF AN ITEM IS NOT PURCHASED
             }   
         }
-        echo "</table>";
+        echo "
+        <tr>
+                    <td>Extras</td>
+                    <td>$Extraquantity</td>
+                    <td>.49</td>
+                    <td>$ExtraSubtotal</td>
+                </tr>
+        </table>";
     
     
     //---- CODE ABOVE IS BASED ON THIS CODE BELOW ----
