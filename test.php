@@ -156,14 +156,14 @@ if(isset($_POST['submit'])) {
             <fieldset>
             <p> $item->Name is $$item->Price.</p>
             <p>Description: $item->Description</p>
-            <label for=\"$item->Name\">Qty: </label>
-            <input type=\"number\" name=\"$item->Name\">
+            <p><label for=\"$item->Name\">Qty: </label>
+            <input type=\"number\" name=\"$item->Name\"><p>
             ";
             echo " <p>Extras available for $ .49: </p>";
             foreach ($item->Extranames as $Extraname) {
                 echo " 
-                    <label for=\"$Extraname\">$Extraname</label>
-                    <input type=\"number\" name=\"$Extraname\">
+                   <p><label for=\"$Extraname\">$Extraname </label>
+                    <input type=\"number\" name=\"$Extraname\"></p>
                 ";
             }
             echo "</fieldset>";
