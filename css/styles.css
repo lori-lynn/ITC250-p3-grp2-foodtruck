@@ -19,8 +19,8 @@ h1 {
 }
 
 div  {
-    max-width: 35%;
-    margin: 0 auto;
+    max-width: 40%;
+    margin: 0 auto 200px auto ;
 }
 fieldset, footer, table {
     background-color: ghostwhite;
@@ -57,4 +57,10 @@ footer {
     text-align: center;
     clear: both;
     margin: 0 auto;
+}
+@media only screen and (max-width: 900px) {
+    div {
+        max-width: 80%;
+        margin: 0 auto 150px auto;
+    } 
 }
