@@ -1,0 +1,60 @@
+@import url(http://fonts.googleapis.com/css?family=Oswald);
+
+body {
+    background-color: silver;
+    font-family: 'Oswald', 'Futura', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color:#00cc99;
+}
+
+h1 {
+    background-image: url(../images/food-truck.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    padding: 20px, 19px;
+}
+
+div  {
+    max-width: 35%;
+    margin: 0 auto;
+}
+fieldset, footer, table {
+    background-color: ghostwhite;
+}
+#submit {
+    float: right;
+}
+table.order-detail {
+    width: 100%;
+    margin: 0 auto;
+    padding: 15px;
+    border: 1px #292931 solid;
+}
+th {
+    text-align: left;
+    border-bottom: 2px #292931 solid;
+    letter-spacing: .1em;
+}
+table.order-total {
+    width: 25%;
+    float: right;
+    border: 1px #292931 solid;
+    padding: 15px;
+}
+th.number, td.number {
+    text-align: right;
+}
+footer {
+    background-color: goldenrod;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    clear: both;
+    margin: 0 auto;
+}
